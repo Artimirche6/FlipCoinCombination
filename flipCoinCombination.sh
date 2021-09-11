@@ -1,50 +1,79 @@
 #!/bin/bash 
 
-declare -A doublet
+declare -A triplet
 declare -A percent
 
 num=21
-TT=0
-TH=0
-HT=0
-HH=0
+TTT=0
+TTH=0
+THT=0
+THH=0
+HTT=0
+HTH=0
+HHT=0
+HHH=0
 
 for((i=1; i<=$num; i++))
 do
 	flip1=$(($RANDOM%2))
 	flip2=$(($RANDOM%2))
+	flip3=$(($RANDOM%2))
 
-	if [ $flip1 -eq 0 ] && [ $flip2 -eq 0 ] 
+	if [ $flip1 -eq 0 ] && [ $flip2 -eq 0 ] && [ $flip3 -eq 0 ] 
 	then
-		echo "TT"
-		TT=$(($TT+1))
-	elif  [ $flip1 -eq 0 ] && [ $flip2 -eq 1 ]
+		echo "TTT"
+		TTT=$(($TTT+1))
+	elif  [ $flip1 -eq 0 ] && [ $flip2 -eq 0 ] && [ $flip3 -eq 1 ]
 	then
-   		echo "TH"
-   		TH=$(($TH+1))
-	elif [ $flip1 -eq 1 ] && [ $flip2 -eq 0 ]
+	   	echo "TTH"
+   		TTH=$(($TTH+1))
+	elif [ $flip1 -eq 0 ] && [ $flip2 -eq 1 ] && [ $flip3 -eq 0 ]
 	then
-   		echo "HT"
-   		HT=$(($HT+1))
-	elif  [ $flip1 -eq 1 ] && [ $flip2 -eq 1 ]
+   		echo "THT"
+   		THT=$(($THT+1))
+	elif [ $flip1 -eq 0 ] && [ $flip2 -eq 1 ] && [ $flip3 -eq 1 ]
 	then
-   		echo "HH"
-   	HH=$(($HH+1))
+   		echo "THH"
+   		THH=$(($THH+1))
+	elif [ $flip1 -eq 1 ] && [ $flip2 -eq 0 ] && [ $flip3 -eq 0 ]
+	then
+   		echo "HTT"
+   		HTT=$(($HTT+1))
+	elif [ $flip1 -eq 1 ] && [ $flip2 -eq 0 ] && [ $flip3 -eq 1 ]
+	then
+   		echo "HTH"
+   		HTH=$(($HTH+1))
+	elif [ $flip1 -eq 1 ] && [ $flip2 -eq 1 ] && [ $flip3 -eq 0 ]
+	then
+   		echo "HHT"
+   		HHT=$(($HHT+1))
+	elif [ $flip1 -eq 1 ] && [ $flip2 -eq 1 ] && [ $flip3 -eq 1 ]
+	then
+   		echo "HHH"
+   		HHH=$(($HHH+1))
 	else
 		echo "invalid"
-	fi 
+	fi
 done 
 
-doublet[TT]=$TT 
-doublet[TH]=$TH
-doublet[HT]=$HT
-doublet[HH]=$HH
+triplet[TTT]=$TTT 
+triplet[TTH]=$TTH
+triplet[THT]=$THT
+triplet[THH]=$THH
+triplet[HTT]=$HTT
+triplet[HTH]=$HTH
+triplet[HHT]=$HHT
+triplet[HHH]=$HHH
 
-echo "Doublet Head and Tail resp : doublet: ${doublet[*]}"
+echo "Triplet Head and Tail : ${triplet[*]}"
 
-percent[TT]=$(($TT*100/21))
-percent[TH]=$(($TH*100/21))
-percent[HT]=$(($HT*100/21))
-percent[HH]=$(($HH*100/21)) 
-
-echo "Percentage Head and Tail resp : percent: ${percent[*]}"
+percent[TTT]=$(($TTT*100/21))
+percent[TTH]=$(($TTH*100/21))
+percent[THT]=$(($THT*100/21))
+percent[THH]=$(($THH*100/21))
+percent[HTT]=$(($HTT*100/21))
+percent[HTH]=$(($HTH*100/21))
+percent[HHT]=$(($HHT*100/21))
+percent[HHH]=$(($HHH*100/21))
+ 
+echo "Per centage Head and Tail : ${percent[*]}"
